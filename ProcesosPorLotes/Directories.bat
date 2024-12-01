@@ -44,7 +44,7 @@ goto end
 
 :5
 echo Copiando archivos del directorio usuario a el escritorio...
-xcopy %USERPROFILE%\* %USERPROFILE%\Desktop\copia /e
+xcopy %USERPROFILE%\* %USERPROFILE%\Desktop /e
 pause
 goto end 
 
