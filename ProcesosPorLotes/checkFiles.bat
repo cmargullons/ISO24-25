@@ -11,7 +11,10 @@ set /p name="Introduce el nombre del archivo -->"
 if exist %name% (
 	echo El archivo %name% ya existe. 
 	goto inicio
-) else (echo > %name%)
+) else (
+	echo Creando archivo %name% ...
+	echo > %name%
+)
 
 pause
 
