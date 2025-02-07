@@ -50,7 +50,6 @@ for a in $2/*.txt; do
 
 		echo "Insertando nombre de los ficheros .txt de $2 en $1..."
 		echo $a >> $1
-		cat $1
 
 	fi
 
