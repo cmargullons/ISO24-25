@@ -35,8 +35,12 @@ fi
 
 echo "Script diseñado por Carlos Margullón Sánchez."
 echo
+echo "<------------------------------------------------------>"
+echo
 
-echo > $1
+echo "Creacion del fichero $1, busqueda de ficheros.txt en el directorio $2 e inserción de datos en $1."
+echo
+> $1
 
 for a in $2/*.txt; do
 
@@ -44,13 +48,19 @@ for a in $2/*.txt; do
 
 	if [ $wc -ge 5 ]; then
 
-		echo
 		echo "$a"
 		echo
-
-		echo "Insertando nombre de los ficheros .txt de $2 en $1..."
 		echo $a >> $1
 
 	fi
 
 done
+
+echo "<------------------------------------------------------>"
+echo
+echo "Muestra del archivo $1 en pantalla."
+echo
+
+wc=$(wc -l $1 | cut -d " " -f 1)
+echo $wc ficheros >> $1
+cat $1
