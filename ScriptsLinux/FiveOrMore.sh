@@ -56,7 +56,7 @@ for a in $2/*.txt; do
 
 done
 
-echo "<------------------------------------------------------>"
+echo "<------------------------------------------------------>"S
 echo
 echo "Muestra del archivo $1 en pantalla."
 echo
@@ -64,3 +64,31 @@ echo
 wc=$(wc -l $1 | cut -d " " -f 1)
 echo $wc ficheros >> $1
 cat $1
+
+echo
+echo "<------------------------------------------------------>"
+echo
+
+echo "A continuación se crearan y se mostrara en pantalla el contenido de los archivos con extensión .txt.q."
+echo
+
+for a in $2/*.txt; do
+
+	wc=$(wc -l $a | cut -d " " -f 1)
+	if [ $wc -ge 5 ];then
+
+		q=$a.q.
+		> $q
+
+		wc2=$(wc -w $a | cut -d " " -f 1)
+		echo El fichero original tiene $wc2 palabras. >> $q
+
+		cat $a >> $q
+		cat $q
+	fi
+
+echo
+echo "-------------------"
+echo
+
+done
