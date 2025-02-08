@@ -40,6 +40,7 @@ echo
 
 echo "Creacion del fichero $1, busqueda de ficheros.txt en el directorio $2 e inserción de datos en $1."
 echo
+
 > $1
 
 for a in $2/*.txt; do
@@ -56,7 +57,7 @@ for a in $2/*.txt; do
 
 done
 
-echo "<------------------------------------------------------>"S
+echo "<------------------------------------------------------>"
 echo
 echo "Muestra del archivo $1 en pantalla."
 echo
