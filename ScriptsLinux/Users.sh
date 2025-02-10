@@ -48,10 +48,20 @@ while read user x uid gid d h shell; do
     if [ $uid -ge $valor ] && [ $uid -ne 65534 ]; then
 
         echo "$user - $uid"
+	    echo $user - $uid >> total
 
     fi
 
 done < /etc/passwd
 
+wc=$(wc -l total | cut -d " " -f 1)
+
+echo
+echo "El número total de usuarios encontrados es $wc."
+
+> total
+
 echo
 echo "===================================="
+
+echo $fecha - $hora - El usuario $USER ha solicitado un informe de usuarios. >> /tmp/logeventos
