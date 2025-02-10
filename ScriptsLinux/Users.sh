@@ -7,33 +7,37 @@ clear
 
 if [ $# -gt 1 ]; then
 
-	echo "ERROR: Debes introducir un unico parámetro."
-	exit
+    echo "ERROR: Debes introducir un único parámetro."
+    exit
 
 fi
 
-if [ ! -f /tmp/logeventos ];then
+if [ ! -f /tmp/logeventos ]; then
 
-	echo "ERROR: El fichero /tmp/logeventos no existe."
-	exit
+    echo "ERROR: El fichero /tmp/logeventos no existe."
+    echo
+
+    echo "Creando archivo /tmp/logeventos..."
+    echo
+    > /tmp/logeventos
 
 fi
 
 fecha=$(date "+%d-%m-%Y")
 hora=$(date "+%H-%M")
 
-echo "====================================="
+echo "===================================="
 echo
-echo "Informe de usuarios el dia $fecha a las $hora."
+echo "Informe de usuarios el día $fecha a las $hora."
 echo
 
-if [ $# -eq 0 ];then
+if [ $# -eq 0 ]; then
 
-	valor=1000
+    valor=1000
 
 else
 
-	valor=$1
+    valor=$1
 
 fi
 
@@ -41,11 +45,11 @@ IFS=:
 
 while read user x uid gid d h shell; do
 
-	if [ $uid -ge $valor ]; then
+    if [ $uid -ge $valor ]; then
 
-		echo "$user - $uid"
+        echo "$user - $uid"
 
-	fi
+    fi
 
 done < /etc/passwd
 
