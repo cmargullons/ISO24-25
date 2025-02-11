@@ -36,7 +36,29 @@ shift
 
 while [ $# -gt 0 ]; do
 
-	echo "$1"
+	if grep "^$1:" /etc/group > /dev/null;then
+
+		echo "El grupo $1 existe."
+
+		busqueda=$(grep "^$1:" /etc/group | grep "^$usuario")
+
+		if $busqueda > /dev/null;then
+
+			echo "Hola"
+
+		else
+
+			echo "Adios"
+
+		fi
+
+	else
+
+		echo "El grupo $1 no existe, creando grupo..."
+		groupadd $1
+
+	fi
+
 	shift
 
 done
