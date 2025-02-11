@@ -11,22 +11,21 @@ if [ $# -ne 1 ]; then
 
 fi
 
-ttl=$(ping $1 -c 1 | cut -d " " -f 13 | cut -d "=" -f 2)
+ttl=$(ping -c 1 $1 | head -2 | tail -1 | cut -d " " -f 6 | cut -d "=" -f 2)
 
-if [ $ttl -eq 128 ];then
+case $ttl in
+	
+	128)
+		echo "TTL=$ttl: Windows"
+	;;
 
-	echo "TTL=$ttl: Windows"
+	64)
 
-fi
+		echo "TTL=$ttl: Linux"
+	;;
 
-if [ $ttl -eq 64 ];then
-
-	echo "TTL=$ttl: Linux"
-
-fi
-
-if [ $ttl -eq 255 ];then
-
-	echo "TTL=$ttl: SunsOS"
-
-fi
+	255)
+		echo "TTL=$ttl: SunOS"
+	;;
+	
+esac
