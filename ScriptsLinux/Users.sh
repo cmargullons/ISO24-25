@@ -48,7 +48,7 @@ while read user x uid gid d h shell; do
     if [ $uid -ge $valor ] && [ $uid -ne 65534 ]; then
 
         echo "$user - $uid"
-	    echo $user - $uid >> total
+	echo $user - $uid >> total
 
     fi
 
